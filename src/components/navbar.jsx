@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import CustomAlert from "./custom-alert";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [theme, setTheme] = useState(() => {
@@ -21,6 +22,12 @@ export default function Navbar() {
   const [showPopup, setShowPopup] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [alertType, setAlertType] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
   const handleUpdateAdminName = () => {
     if (adminName === "") {
@@ -314,6 +321,7 @@ export default function Navbar() {
                 className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-900 hover:rounded-md cursor-pointer text-red-500"
                 tabIndex={0}
                 role="menuitem"
+                onClick={handleLogout}
               >
                 Logout
               </li>
