@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import CustomAlert from "./custom-alert";
 
 export default function AddEmployee({
@@ -51,8 +51,6 @@ export default function AddEmployee({
       return;
     }
 
-    onAddEmployee(newEmployeeData);
-
     setAlertMessage("Data sucessfully added");
     setAlertType("success");
 
@@ -60,6 +58,7 @@ export default function AddEmployee({
     localStorage.setItem("employees", JSON.stringify(updatedEmployees));
     onTotalEmployees(updatedEmployees.length);
     setShowPopup(false);
+    onAddEmployee(newEmployeeData);
     setNewEmployee({
       id: "",
       name: "",
@@ -77,7 +76,7 @@ export default function AddEmployee({
   };
 
   return (
-    <div className="flex items-center justify-between h-[100px] px-5 w-full bg-white text-black relative dark:bg-black dark:text-white">
+    <div className="flex  items-center justify-between h-[100px] px-5 w-full bg-white text-black relative dark:bg-black dark:text-white">
       {alertMessage && (
         <CustomAlert
           message={alertMessage}
@@ -87,7 +86,7 @@ export default function AddEmployee({
       )}
       <div>
         <div className="flex items-center gap-2">
-          <h1 className="font-medium text-2xl">Employees</h1>
+          <h1 className="font-medium text-xl md:text-2xl">Employees</h1>
           <span className="text-sm bg-[var(--light-maroon)] text-[var(--maroon)] rounded-full py-1 px-2">
             {totalEmployees}
           </span>
@@ -125,11 +124,13 @@ export default function AddEmployee({
           />
         </svg>
 
-        <h1 className="text-base font-bold text-white">Add Employee</h1>
+        <h1 className="text-base font-semibold md:font-bold  text-white">
+          Add New
+        </h1>
       </div>
 
       {showPopup && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="fixed inset-0 z-50 flex px-4  items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white dark:bg-gray-900 p-5 rounded shadow-lg w-[400px]">
             <h2 className="text-xl font-bold mb-3">Add New Employee</h2>
             <div className="mb-2">

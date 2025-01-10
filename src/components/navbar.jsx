@@ -330,7 +330,7 @@ export default function Navbar() {
         )}
 
         {showPopup && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="fixed px-4 inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
             <div className="bg-white dark:bg-gray-900 p-5 rounded shadow-lg w-[400px]">
               <h2 className="text-xl font-bold mb-3">Update data user</h2>
               <div className="mb-2">
@@ -340,7 +340,7 @@ export default function Navbar() {
                   name="name"
                   value={adminName}
                   onChange={handleAdminNameChange}
-                  className="w-full border p-2 rounded"
+                  className="w-full border p-2 rounded dark:text-black"
                   required
                 />
               </div>

@@ -5,6 +5,19 @@ import EmployeeTable from "../components/employee-table";
 import { useState, useEffect } from "react";
 import DivisionTable from "../components/division-table";
 
+const dummyEmployees = [
+  {
+    id: 1,
+    name: "Agus Heryanto",
+    email: "agusheryantodev@gmail.com",
+    image: "https://avatars.githubusercontent.com/u/112523637?v=4",
+    phone: "081296380081",
+    division: "Full Stack",
+    position: "Intern",
+    created_at: "2025-01-10T17:28:42.935Z",
+  },
+];
+
 export default function Homepage() {
   const [activeTab, setActiveTab] = useState(() => {
     return localStorage.getItem("activeTab") || "all";
@@ -12,12 +25,12 @@ export default function Homepage() {
 
   const [employees, setEmployees] = useState(() => {
     const storedEmployees = localStorage.getItem("employees");
-    return storedEmployees ? JSON.parse(storedEmployees) : [];
+    return storedEmployees ? JSON.parse(storedEmployees) : dummyEmployees;
   });
 
   const [totalEmployees, setTotalEmployees] = useState(() => {
     const storedEmployees = localStorage.getItem("employees");
-    return storedEmployees ? JSON.parse(storedEmployees).length : 0;
+    return storedEmployees ? JSON.parse(storedEmployees).length : 1;
   });
 
   useEffect(() => {
@@ -31,6 +44,7 @@ export default function Homepage() {
 
   const handleAddEmployee = (newEmployee) => {
     setEmployees((prevEmployees) => [...prevEmployees, newEmployee]);
+    console.log(employees);
   };
 
   const handleUpdateEmployee = (updatedEmployee) => {

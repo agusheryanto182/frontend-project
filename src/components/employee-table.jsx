@@ -254,107 +254,121 @@ const EmployeeTable = ({
       />
 
       {showEditPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white dark:bg-gray-900 p-6 rounded-md w-1/3">
-            <h2 className="text-xl font-semibold ">Edit Employee</h2>
-            <form>
-              <label className="block mt-4 ">
-                Name:
-                <input
-                  type="text"
-                  value={selectedEmployee?.name}
-                  className="w-full mt-2 p-2 border rounded dark:text-black "
-                  onChange={(e) =>
-                    setSelectedEmployee({
-                      ...selectedEmployee,
-                      name: e.target.value,
-                    })
+        <div className="fixed inset-0 z-50 flex px-4  items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white dark:bg-gray-900 p-5 rounded shadow-lg w-[400px]">
+            <h2 className="text-xl font-bold mb-3">Edit Employee</h2>
+            <div className="mb-2">
+              <label>Name:</label>
+              <input
+                type="text"
+                value={selectedEmployee?.name}
+                className="w-full mt-2 p-2 border rounded dark:text-black "
+                onChange={(e) =>
+                  setSelectedEmployee({
+                    ...selectedEmployee,
+                    name: e.target.value,
+                  })
+                }
+                required
+              />
+            </div>
+            <div className="mb-2">
+              <label>Image:</label>
+              <input
+                type="file"
+                className="w-full mt-2 p-2 border rounded "
+                onChange={(e) =>
+                  setSelectedEmployee({
+                    ...selectedEmployee,
+                    image: URL.createObjectURL(e.target.files[0]),
+                  })
+                }
+              />
+            </div>
+            <div className="mb-2">
+              <label>Email:</label>
+              <input
+                type="email"
+                name="email"
+                value={selectedEmployee?.email}
+                className="w-full mt-2 p-2 border rounded dark:text-black "
+                onChange={(e) =>
+                  setSelectedEmployee({
+                    ...selectedEmployee,
+                    name: e.target.value,
+                  })
+                }
+                required
+              />
+            </div>
+            <div className="mb-2">
+              <label>Phone:</label>
+              <input
+                type="text"
+                value={selectedEmployee?.phone}
+                className="w-full mt-2 p-2 border rounded dark:text-black"
+                onChange={(e) =>
+                  setSelectedEmployee({
+                    ...selectedEmployee,
+                    phone: e.target.value,
+                  })
+                }
+              />
+            </div>
+            <div className="mb-2">
+              <label>Division:</label>
+              <select
+                value={selectedEmployee?.division}
+                className="w-full mt-2 p-2 border rounded dark:text-black "
+                onChange={(e) =>
+                  setSelectedEmployee({
+                    ...selectedEmployee,
+                    division: e.target.value,
+                  })
+                }
+              >
+                <option value="">{selectedEmployee?.division}</option>
+                {divisions.map((division) => (
+                  <option key={division.id} value={division.name}>
+                    {division.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="mb-2">
+              <label>Position:</label>
+              <input
+                type="text"
+                value={selectedEmployee?.position}
+                className="w-full mt-2 p-2 border rounded dark:text-black"
+                onChange={(e) =>
+                  setSelectedEmployee({
+                    ...selectedEmployee,
+                    position: e.target.value,
+                  })
+                }
+                required
+              />
+            </div>
+            <div className="flex justify-end gap-2 mt-4">
+              <button
+                onClick={closePopup}
+                className="px-4 py-2 bg-gray-300 text-black rounded"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  if (selectedEmployee) {
+                    handleUpdateEmployee(selectedEmployee);
+                    closePopup();
                   }
-                />
-              </label>
-              <label className="block mt-4 ">
-                Image:
-                <input
-                  type="file"
-                  className="w-full mt-2 p-2 border rounded "
-                  onChange={(e) =>
-                    setSelectedEmployee({
-                      ...selectedEmployee,
-                      image: URL.createObjectURL(e.target.files[0]),
-                    })
-                  }
-                />
-              </label>
-              <label className="block mt-4 ">
-                Phone:
-                <input
-                  type="text"
-                  value={selectedEmployee?.phone}
-                  className="w-full mt-2 p-2 border rounded dark:text-black"
-                  onChange={(e) =>
-                    setSelectedEmployee({
-                      ...selectedEmployee,
-                      phone: e.target.value,
-                    })
-                  }
-                />
-              </label>
-              <label className="block mt-4 ">
-                Division:
-                <select
-                  value={selectedEmployee?.division}
-                  className="w-full mt-2 p-2 border rounded dark:text-black "
-                  onChange={(e) =>
-                    setSelectedEmployee({
-                      ...selectedEmployee,
-                      division: e.target.value,
-                    })
-                  }
-                >
-                  <option value="">{selectedEmployee?.division}</option>
-                  {divisions.map((division) => (
-                    <option key={division.id} value={division.name}>
-                      {division.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label className="block mt-4 ">
-                Position:
-                <input
-                  type="text"
-                  value={selectedEmployee?.position}
-                  className="w-full mt-2 p-2 border rounded dark:text-black"
-                  onChange={(e) =>
-                    setSelectedEmployee({
-                      ...selectedEmployee,
-                      position: e.target.value,
-                    })
-                  }
-                />
-              </label>
-              <div className="mt-4 flex justify-end">
-                <button
-                  type="button"
-                  className="px-4 py-2 mr-2 bg-gray-200 dark:bg-gray-800 rounded"
-                  onClick={closePopup}
-                >
-                  Cancel
-                </button>
-                <button
-                  type="button"
-                  className="px-4 py-2 bg-[var(--maroon)] text-white rounded mr-2"
-                  onClick={() => {
-                    if (selectedEmployee) {
-                      handleUpdateEmployee(selectedEmployee);
-                      closePopup();
-                    }
-                  }}
-                >
-                  Save
-                </button>
-              </div>
-            </form>
+                }}
+                className="px-4 py-2 bg-[var(--maroon)] text-white rounded"
+              >
+                Save
+              </button>
+            </div>
           </div>
         </div>
       )}

@@ -54,6 +54,8 @@ export default function Login() {
       "JlH6xber1RX6GLKGmWvoIafEeBvUMe1pH9Pe5O6obXYquQUjUEGQaboXYofjk5sR"
     );
 
+    localStorage.setItem("adminName", "Agus Heryanto");
+
     navigate("/");
   };
 
