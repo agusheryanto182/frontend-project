@@ -304,7 +304,7 @@ const EmployeeTable = ({
             <div className="mb-2">
               <label>Phone:</label>
               <input
-                type="text"
+                type="number"
                 value={selectedEmployee?.phone}
                 className="w-full mt-2 p-2 border rounded dark:text-black"
                 onChange={(e) =>
@@ -374,8 +374,8 @@ const EmployeeTable = ({
       )}
 
       {showDeletePopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white dark:bg-gray-900 p-6 rounded-md w-1/3">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex px-4 justify-center items-center">
+          <div className="bg-white dark:bg-gray-900 p-6 rounded-md md:w-1/3">
             <h2 className="text-xl font-semibold">Confirm Delete</h2>
             <p className="mt-4">
               Are you sure you want to delete{" "}

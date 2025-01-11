@@ -140,7 +140,7 @@ export default function AddEmployee({
                 name="name"
                 value={newEmployee.name}
                 onChange={handleInputChange}
-                className="w-full border p-2 rounded"
+                className="w-full border p-2 rounded dark:text-black"
                 required
               />
             </div>
@@ -160,7 +160,7 @@ export default function AddEmployee({
                   };
                   reader.readAsDataURL(file);
                 }}
-                className="w-full border p-2 rounded"
+                className="w-full border p-2 rounded dark:text-black"
               />
             </div>
             <div className="mb-2">
@@ -170,18 +170,18 @@ export default function AddEmployee({
                 name="email"
                 value={newEmployee.email}
                 onChange={handleInputChange}
-                className="w-full border p-2 rounded"
+                className="w-full border p-2 rounded dark:text-black"
                 required
               />
             </div>
             <div className="mb-2">
               <label>Phone:</label>
               <input
-                type="text"
+                type="number"
                 name="phone"
                 value={newEmployee.phone}
                 onChange={handleInputChange}
-                className="w-full border p-2 rounded"
+                className="w-full border p-2 rounded dark:text-black"
                 required
               />
             </div>
